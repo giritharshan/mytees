@@ -13,7 +13,20 @@ class TblProduct extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('product', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->String('name');
+            $table->String('cat');
+            $table->text('desc');
+            $table->integer('price');
+            $table->String('color');
+            $table->String('size');
+            $table->String('brand');
+            $table->String('img1');
+            $table->String('img2');
+            $table->String('img3');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +36,6 @@ class TblProduct extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('movie');
     }
 }

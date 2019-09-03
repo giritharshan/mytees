@@ -10,9 +10,16 @@
 
     <!-- Search -->
     <div class="menu_search">
-        <form action="#" id="menu_search_form" class="menu_search_form">
-            <input type="text" class="search_input" placeholder="Search Item" required="required">
-            <button class="menu_search_button"><img src="{{asset('shop/images/search.png')}}" alt=""></button>
+        <form action="{{'/search'}}" method="POST" role="search">
+            {{ csrf_field() }}
+            <div class="input-group">
+                <input type="text" class="form-control" name="q" id="q"
+                       placeholder="Search Movies"> <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span class="fas fa-search"></span>
+            </button>
+        </span>
+            </div>
         </form>
     </div>
     <!-- Navigation -->
