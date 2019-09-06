@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Model\Order;
+use Stripe\Stripe as stp;
+use Stripe\Charge as crg;
+
 
 
 
@@ -17,10 +20,10 @@ class ApiController extends Controller
         return view('Shop.checkout');
     }
 
-    public function postCheckout(Request $request)
+    public function stripePost(Request $request)
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
+        stp::setApiKey(env('STRIPE_SECRET'));
+        crg::create ([
             "amount" => 1000 * 100,
             "currency" => "usd",
             "source" => $request->stripeToken,
