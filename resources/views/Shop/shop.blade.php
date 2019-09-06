@@ -7,13 +7,13 @@
 
     <div class="col-xl-4 col-md-6">
         <div class="product">
-            <div class="product_image"><img src="{{asset('shop/images/product_1.jpg')}}" alt=""></div>
+            <div class="product_image"><a href="{{'/ch2/search/'.$items->id}}"><img src="{{asset('shop/images/product_1.jpg')}}" alt="" ></a></div>
             <div class="product_content">
-                <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                <div class="product_info d-flex flex-row     align-items-start justify-content-start">
                     <div>
                         <div>
-                            <div class="product_name"><a href="product.html">{{$items->desc}}</a></div>
-                            <div class="product_category">In <a href="category.html">{{$items->cat}}</a></div>
+                            <div class="product_name"><a href="{{'/ch2/search/'.$items->id}}">{{$items->desc}}</a></div>
+                            <div class="product_category">In <a href="{{'/ch2/search/'.$items->id}}">{{$items->cat}}</a></div>
                         </div>
                     </div>
                     <div class="ml-auto text-right">

@@ -90,4 +90,10 @@ class ProdController extends Controller
     {
         //
     }
+    public function search($id)
+    {
+        $items = prods::findorfail($id);
+        //dd($items);
+        return view('Shop.viewcloth',['item'=>$items]);
+    }
 }

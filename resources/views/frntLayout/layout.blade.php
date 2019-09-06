@@ -10,11 +10,11 @@
 
     <!-- Search -->
     <div class="menu_search">
-        <form action="{{'/search'}}" method="POST" role="search">
+        <form action="{{'ch2/search'}}" method="POST" role="search">
             {{ csrf_field() }}
             <div class="input-group">
                 <input type="text" class="form-control" name="q" id="q"
-                       placeholder="Search Movies"> <span class="input-group-btn">
+                       placeholder="Search Items"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default">
                 <span class="fas fa-search"></span>
             </button>
