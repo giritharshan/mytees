@@ -24,15 +24,15 @@ class ApiController extends Controller
     {
         stp::setApiKey(env('STRIPE_SECRET'));
         crg::create ([
-            "amount" => 1000 * 100,
+            "amount" => 2000,
             "currency" => "usd",
-            "source" => $request->stripeToken,
-            "description" => "Test payment from Giri@wlv.com."
+            "source" => "tok_visa", // obtained with Stripe.js
+            "metadata" => ["order_id" => "6735"]
         ]);
 
        // Session::flash('success', 'Payment successful!');
 
-        return back();
+        return redirect('/ch2')->with('success','Successfully purchased');
 
     }
 }

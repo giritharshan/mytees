@@ -104,4 +104,44 @@
         }
 
     });
+    Stripe.setPublishableKey('pk_test_gr1c1WOFpTt3NfyFWWSKYCs900ESrvGslY');
+
+    var $form = $('#checkout-form');
+
+    $form.submit(function(event) {
+        $('#charge-error').addClass('hidden');
+        $form.find('button').prop('disabled',true);
+        Stripe.card.createToken({
+            number: $('#card-number').val(),
+            cvc: $('#card-cvc').val(),
+            exp_month: $('#card-expiry-month').val(),
+            exp_year: $('#card-expiry-year').val()
+        }, stripeResponseHandler);
+        return false;
+    });
+
+    function stripeResponseHandler(status, response){
+
+        if(response.error){
+            $('#charge-error').removeClass('hidden');
+            $('#charge-error').text(response.error.message);
+            $form.find('button').prop('disabled',false);
+        }else{
+            var token = response.id;
+            $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+
+            // Submit the form:
+            $form.get(0).submit();
+        }
+    }
+    var stripe = Stripe('pk_test_YNAE25zZzKM69yN6aF9DSvKg00S8LQ2RNa');
+    var elements = stripe.elements();
+
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    var promise = stripe.createToken(card);
+    promise.then(function(result) {
+        // result.token is the card token.
+    });
 </script>

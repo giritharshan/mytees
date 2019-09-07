@@ -1,6 +1,29 @@
+<?
+
+
+?>
+
 @extends('frntLayout.layout')
 
+@if(Session::has('success'))
+    <script>
 
+        alert("{{Session::get('success')}}");
+
+    </script>
+    <!--<div class ="col-sm-6.col-md-4.col-md-offset-4.col-sm-offset-3">
+        <div id="charge-message" class="alert alert-success">
+
+    </div>
+    </div>-->
+@endif
+@if(Session::has('empty'))
+    <script>
+
+        alert("{{Session::get('empty')}}");
+
+    </script>
+    @endif
 @section('products')
     <!-- Product -->
     @foreach($item as $items)
