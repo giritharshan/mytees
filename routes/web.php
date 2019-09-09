@@ -39,3 +39,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('stripe', 'apiController@stripe');
 
 Route::post('stripe', 'apiController@stripePost')->name('stripe.post');
+
+
+Route::get('/admin', function () {
+    return view('Admin_d.index');
+});
+Route::get('/live_search', 'LiveSearch@index');
+
+Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
+
